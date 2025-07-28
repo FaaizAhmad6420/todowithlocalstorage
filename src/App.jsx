@@ -41,13 +41,13 @@ function App() {
   useEffect(() => {
     const storedTodos = localStorage.getItem("todoList")
     const parsedTodos = JSON.parse(storedTodos)
+    if (parsedTodos && parsedTodos.length > 0) {
     setTodoList(parsedTodos)
+    }
   }, [])
 
   useEffect(() => {
-    if (todoList.length > 0) {
-      localStorage.setItem("todoList", JSON.stringify(todoList))
-    }
+    localStorage.setItem("todoList", JSON.stringify(todoList))
   }, [todoList])
 
 
